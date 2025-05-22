@@ -18,46 +18,46 @@ class Recipe
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\NotBlank()]
+    #[Assert\NotBlank]
     #[Assert\Length(min: 2, max: 50)]
     private ?string $name = null;
 
     #[ORM\Column(nullable: true)]
-    #[Assert\PositiveOrZero()]
+    #[Assert\PositiveOrZero]
     #[Assert\LessThanOrEqual(1440)]
     private ?int $time = null;
 
     #[ORM\Column(nullable: true)]
-    #[Assert\PositiveOrZero()]
+    #[Assert\PositiveOrZero]
     #[Assert\LessThanOrEqual(50)]
     private ?int $nbPersons = null;
 
     #[ORM\Column(nullable: true)]
-    #[Assert\PositiveOrZero()]
+    #[Assert\PositiveOrZero]
     #[Assert\LessThanOrEqual(5)]
     private ?int $difficulty = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    #[Assert\NotBlank()]
+    #[Assert\NotBlank]
     private ?string $description = null;
 
     #[ORM\Column(nullable: true)]
-    #[Assert\PositiveOrZero()]
+    #[Assert\PositiveOrZero]
     #[Assert\LessThanOrEqual(1000)]
     private ?float $price = null;
 
     #[ORM\Column]
-    #[Assert\NotNull()]
+    #[Assert\NotNull]
     private ?bool $isFavorite = false;
 
     #[ORM\Column]
-    #[Assert\NotNull()]
+    #[Assert\NotNull]
     private ?\DateTimeImmutable $createdAt = null;
 
     /**
      * @var Collection<int, ingredient>
      */
-    #[ORM\ManyToMany(targetEntity: ingredient::class)]
+    #[ORM\ManyToMany(targetEntity: Ingredient::class)]
     private Collection $ingredients;
 
     public function __construct()
@@ -176,7 +176,7 @@ class Recipe
         return $this->ingredients;
     }
 
-    public function addIngredient(ingredient $ingredient): static
+    public function addIngredient(Ingredient $ingredient): static
     {
         if (!$this->ingredients->contains($ingredient)) {
             $this->ingredients->add($ingredient);
@@ -185,7 +185,7 @@ class Recipe
         return $this;
     }
 
-    public function removeIngredient(ingredient $ingredient): static
+    public function removeIngredient(Ingredient $ingredient): static
     {
         $this->ingredients->removeElement($ingredient);
 

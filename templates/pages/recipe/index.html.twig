@@ -29,7 +29,7 @@
                     <td>{% if recipe.difficulty %}{{ recipe.difficulty }}{% else %}Non renseigné{% endif %}</td>
                     <td>{{ recipe.createdAt|date('d/m/Y') }}</td>
                     <td>
-                        <a href="#" class="btn">TODO</a>
+                        <a href="{{ path('recipe_edit', {id: recipe.id}) }}" class="btn">TODO</a>
                     </td>
                     <td>
                         <a href="#" class="btn">TODO</a>
