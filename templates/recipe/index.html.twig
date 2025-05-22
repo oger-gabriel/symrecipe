@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes recettes{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Mes recettes</h1>
+
+    <table class="table table-hover">
+        <thead>
+            <tr class="table-dark">
+                <th>Numéro</th>
+                <th>Nom</th>
+                <th>Prix</th>
+                <th>Difficulté</th>
+                <th>Date de création</th>
+                <th>Édition</th>
+                <th>Suppression</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for recipe in recipes %}
+                <tr class="table-light">
+                    <td>{{ recipe.id }}</td>
+                    <td>{{ recipe.name }}</td>
+                    <td>{{ recipe.price }}</td>
+                    <td>{% if recipe.difficulty %}{{ recipe.difficulty }}{% else %}Non renseigné{% endif %}</td>
+                    <td>{{ recipe.createdAt|date('d/m/Y') }}</td>
+                    <td>
+                        <a href="#" class="btn">TODO</a>
+                    </td>
+                    <td>
+                        <a href="#" class="btn">TODO</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="navigation d-flex justify-content-center mt-4">
+        <ul class="pagination">
+            <li class="page-item">
+                <a class="page-link" href="#">« Previous</a>
+            </li>
+            <li class="page-item active">
+                <a class="page-link" href="#">1</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="#">2</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="#">3</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="#">Next »</a>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
